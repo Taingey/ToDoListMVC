@@ -3,19 +3,23 @@ package co.istad.sbdemo.controller;
 import co.istad.sbdemo.model.Item;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import co.istad.sbdemo.service.ItemService;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 public class ItemController {
 
-    private List<Item> items = new ArrayList<>();
-    private Long nextItemId = 1L;
+    private final ItemService itemService;
+
+    public ItemController(ItemService itemService) {
+        this.itemService = itemService;
+    }
 
     @GetMapping("/items")
     public String getAllItems(Model model) {
+        List<Item> items = itemService.getAllItems();
         model.addAttribute("items", items);
         return "items";
     }
@@ -28,16 +32,14 @@ public class ItemController {
 
     @PostMapping("/items")
     public String createNewItem(@ModelAttribute Item item) {
-        item.setId(nextItemId++); // Set the ID and increment for the next item
-        items.add(item);
+        itemService.createNewItem(item);
         return "redirect:/items";
     }
 
     @PostMapping("/{id}/delete")
     public String deleteItem(@PathVariable Long id) {
-        items.removeIf(item -> item.getId().equals(id));
+        itemService.deleteItem(id);
         return "redirect:/items";
     }
-
 }
 
