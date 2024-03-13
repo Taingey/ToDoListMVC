@@ -12,6 +12,7 @@ import java.util.List;
 public class ItemController {
 
     private List<Item> items = new ArrayList<>();
+    private Long nextItemId = 1L;
 
     @GetMapping("/items")
     public String getAllItems(Model model) {
@@ -27,6 +28,7 @@ public class ItemController {
 
     @PostMapping("/items")
     public String createNewItem(@ModelAttribute Item item) {
+        item.setId(nextItemId++); // Set the ID and increment for the next item
         items.add(item);
         return "redirect:/items";
     }
