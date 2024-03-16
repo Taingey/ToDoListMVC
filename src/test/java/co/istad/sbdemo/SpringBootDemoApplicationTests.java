@@ -1,6 +1,6 @@
 package co.istad.sbdemo;
 
-import co.istad.sbdemo.model.Item;
+import co.istad.sbdemo.model.Todo;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -9,7 +9,7 @@ class SpringBootDemoApplicationTests {
 
 	@Test
 	void testLombook() {
-		Item item = new Item();
+		Todo item = new Todo();
 		item.setId(1);
 		item.setName("Sumsung Galaxy Note 10+");
 		item.setPrice(2500);

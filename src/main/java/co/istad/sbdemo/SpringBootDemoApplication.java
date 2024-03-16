@@ -1,6 +1,5 @@
 package co.istad.sbdemo;
 
-import co.istad.sbdemo.model.Item;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -8,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SpringBootDemoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringBootDemoApplication.class, args);
+		SpringApplication.run(co.istad.sbdemo.SpringBootDemoApplication.class, args);
 	}
 
 }
